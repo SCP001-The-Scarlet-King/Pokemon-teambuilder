@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="dashboard-container">
+        <h1>Welcome to your Dashboard, {{ user.username }}!</h1>
+        <div class="team-section">
+            <h2>Your Teams</h2>
+            <div class="team-list-container">
+                <ul class="team-list">
+                    {% for team in teams %}
+                    <li>{{ team.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="actions">
+            <a href="{% url 'account_logout' %}">Logout</a>
+            <a href="{% url 'teambuilder' %}">Manage Teams</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="login-prompt">
+        <p>Please <a href="{% url 'account_login' %}">log in</a> to access your dashboard.</p>
+    </div>
+    {% endif %}
+</body>
+
+</html>

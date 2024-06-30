@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Builder</title>
+    <link rel="stylesheet" href="{% static 'css/team_list.css' %}">
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="title-box">
+            <h1>Teambuilder</h1>
+        </div>
+        <div class="link-box">
+            <a href="/" class="link-button">Home</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="build-team">
+            <button id="build-new-team">Build New Team</button>
+        </div>
+        <div class="team-list">
+            <h2>Your Teams</h2>
+            <ul id="team-list">
+                {% for team in teams %}
+                <li data-team-id="{{ team.id }}">{{ team.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const teamList = document.getElementById('team-list');
+            teamList.querySelectorAll('li').forEach(item => {
+                item.addEventListener('click', () => {
+                    const teamId = item.getAttribute('data-team-id');
+                    window.location.href = "{% url 'edit_team_with_id' team_id=0 %}".replace('0', teamId);
+                });
+            });
+
+            document.getElementById('build-new-team').addEventListener('click', () => {
+                window.location.href = "{% url 'edit_team' %}";
+            });
+        });
+    </script>
+</body>
+
+</html>
