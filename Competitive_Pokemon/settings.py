@@ -13,7 +13,7 @@ SECRET_KEY = 'your-secret-key'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app' , '.now.sh' , '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -73,16 +73,16 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default' : {
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'railway',
-        'USER' : 'postgres',
-        'PASSWORD' : 'DlOJlTBqmLXRIerRpaclohSBbInSgDfE',
-        'HOST' : 'monorail.proxy.rlwy.net',
-        'PORT' : '55514',
-    }
-}
+# DATABASES = {
+#     'default' : {
+#         'ENGINE' : 'django.db.backends.postgresql',
+#         'NAME' : 'railway',
+#         'USER' : 'postgres',
+#         'PASSWORD' : 'DlOJlTBqmLXRIerRpaclohSBbInSgDfE',
+#         'HOST' : 'monorail.proxy.rlwy.net',
+#         'PORT' : '55514',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
